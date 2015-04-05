@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <style name="ButtonText">
+    <item name="android:layout_centerInParent">true</item>
+    <item name="android:padding">5dp</item>
+    <item name="android:paddingTop">12dp</item>
+  </style>
+</resources>

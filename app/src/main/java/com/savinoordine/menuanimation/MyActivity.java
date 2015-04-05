@@ -5,8 +5,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.Toast;
-
 import io.github.onivas.promotedactions.PromotedActionsLibrary;
+import io.github.onivas.promotedactions.Side;
 
 public class MyActivity extends Activity {
 
@@ -27,11 +27,12 @@ public class MyActivity extends Activity {
                 Toast.makeText(getApplicationContext(), "Button clicked.", Toast.LENGTH_SHORT).show();
             }
         };
-
-        promotedActionsLibrary.addItem(getResources().getDrawable(android.R.drawable.ic_menu_edit), onClickListener);
-        promotedActionsLibrary.addItem(getResources().getDrawable(android.R.drawable.ic_menu_send), onClickListener);
-        promotedActionsLibrary.addItem(getResources().getDrawable(android.R.drawable.ic_input_get), onClickListener);
-
+        promotedActionsLibrary.addItem(getResources().getDrawable(android.R.drawable.ic_menu_edit),
+            "Left text", Side.LEFT, onClickListener);
+        promotedActionsLibrary.addItem(getResources().getDrawable(android.R.drawable.ic_menu_send),
+            onClickListener);
+        promotedActionsLibrary.addItem(getResources().getDrawable(android.R.drawable.ic_input_get),
+            onClickListener);
         promotedActionsLibrary.addMainItem(getResources().getDrawable(R.drawable.ic_add));
     }
 }

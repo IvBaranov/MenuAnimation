@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_gravity="bottom|right"
+    android:gravity="right"
+    android:layout_width="match_parent"
+    android:visibility="gone"
+    android:orientation="horizontal"
+    android:layout_height="wrap_content">
+
+  <TextView
+      android:id="@+id/left_text"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_gravity="center"
+      android:visibility="gone"
+      style="@style/ButtonText" />
+
+  <LinearLayout
+      android:id="@+id/middle_layout"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/top_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="gone"
+        style="@style/ButtonText" />
+
+    <ImageButton
+        android:id="@+id/image_button"
+        android:layout_width="@dimen/dim56dp"
+        android:layout_height="@dimen/dim56dp"
+        android:layout_gravity="right"
+        android:background="@drawable/onivas_fab_circle" />
+
+    <TextView
+        android:id="@+id/bottom_text"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/dim28dp"
+        android:visibility="gone"
+        style="@style/ButtonText" />
+
+  </LinearLayout>
+
+  <TextView
+      android:id="@+id/right_text"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_gravity="center"
+      android:visibility="gone"
+      style="@style/ButtonText" />
+</LinearLayout>

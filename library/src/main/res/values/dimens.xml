@@ -1,4 +1,5 @@
 <resources>
+    <dimen name="dim28dp">28dp</dimen>
     <dimen name="dim56dp">56dp</dimen>
     <dimen name="dim78dp">78dp</dimen>
 </resources>

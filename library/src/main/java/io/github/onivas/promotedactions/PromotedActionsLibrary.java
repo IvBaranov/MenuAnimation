@@ -12,7 +12,9 @@ import android.view.animation.Animation;
 import android.view.animation.RotateAnimation;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
-
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import java.util.ArrayList;
 
 
@@ -28,7 +30,7 @@ public class PromotedActionsLibrary {
 
     RotateAnimation rotateCloseAnimation;
 
-    ArrayList<ImageButton> promotedActions;
+    ArrayList<LinearLayout> promotedActions;
 
     ObjectAnimator objectAnimator[];
 
@@ -38,9 +40,11 @@ public class PromotedActionsLibrary {
 
     private boolean isMenuOpened;
 
+    private TextView bottomText;
+
     public void setup(Context activityContext, FrameLayout layout) {
         context = activityContext;
-        promotedActions = new ArrayList<ImageButton>();
+        promotedActions = new ArrayList<LinearLayout>();
         frameLayout = layout;
         px = (int) context.getResources().getDimension(R.dimen.dim56dp) + 10;
         openRotation();
@@ -77,9 +81,10 @@ public class PromotedActionsLibrary {
 
     public void addItem(Drawable drawable, View.OnClickListener onClickListener) {
 
-        ImageButton button = (ImageButton) LayoutInflater.from(context).inflate(R.layout.promoted_action_button, frameLayout, false);
+      LinearLayout button = (LinearLayout) LayoutInflater.from(context).inflate(
+            R.layout.promoted_action_button_with_text, frameLayout, false);
 
-        button.setImageDrawable(drawable);
+        ((ImageView) button.findViewById(R.id.image_button)).setImageDrawable(drawable);
 
         button.setOnClickListener(onClickListener);
 
@@ -88,6 +93,47 @@ public class PromotedActionsLibrary {
         frameLayout.addView(button);
 
         return;
+    }
+
+    public void addItem(Drawable drawable, String text, Side side, View.OnClickListener onClickListener) {
+
+      LinearLayout button = (LinearLayout) LayoutInflater.from(context)
+          .inflate(R.layout.promoted_action_button_with_text, frameLayout, false);
+      ((ImageView) button.findViewById(R.id.image_button)).setImageDrawable(drawable);
+      switch (side) {
+        case LEFT:
+          TextView leftText = (TextView) button.findViewById(R.id.left_text);
+          leftText.setText(text);
+          leftText.setVisibility(View.VISIBLE);
+          break;
+        //TODO Other sides look not that good right now
+        //case TOP:
+        //  TextView topText = (TextView) button.findViewById(R.id.top_text);
+        //  topText.setText(text);
+        //  topText.setVisibility(View.VISIBLE);
+        //  px = (int) context.getResources().getDimension(R.dimen.dim56dp)
+        //      + 10
+        //      + (int) context.getResources().getDimension(R.dimen.dim28dp);
+        //  break;
+        //case RIGHT:
+        //  TextView rightText = ((TextView) button.findViewById(R.id.right_text));
+        //  rightText.setText(text);
+        //  rightText.setVisibility(View.VISIBLE);
+        //  break;
+        //case BOTTOM:
+        //  bottomText = (TextView) button.findViewById(R.id.bottom_text);
+        //  bottomText.setText(text);
+        //  bottomText.setVisibility(View.VISIBLE);
+        //  px = (int) context.getResources().getDimension(R.dimen.dim56dp)
+        //      + 10
+        //      + (int) context.getResources().getDimension(R.dimen.dim28dp);
+        //  break;
+      }
+      button.setOnClickListener(onClickListener);
+      promotedActions.add(button);
+      frameLayout.addView(button);
+
+      return;
     }
 
     /**
@@ -195,7 +241,7 @@ public class PromotedActionsLibrary {
      * @param position
      * @return objectAnimator
      */
-    private ObjectAnimator setCloseAnimation(ImageButton promotedAction, int position) {
+    private ObjectAnimator setCloseAnimation(LinearLayout promotedAction, int position) {
 
         ObjectAnimator objectAnimator;
 
@@ -222,7 +268,7 @@ public class PromotedActionsLibrary {
      * @param position
      * @return objectAnimator
      */
-    private ObjectAnimator setOpenAnimation(ImageButton promotedAction, int position) {
+    private ObjectAnimator setOpenAnimation(LinearLayout promotedAction, int position) {
 
         ObjectAnimator objectAnimator;
 
